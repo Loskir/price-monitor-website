@@ -25,8 +25,7 @@ onMounted(async () => {
     {
     fps: 5,
     qrbox: (w, h) => {
-      console.log(w, h)
-      const width = w * 0.4
+      const width = Math.max(w, h) * 0.4
       return { width, height: width*0.6 }
     },
   },
