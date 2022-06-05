@@ -6,14 +6,21 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { Html5Qrcode } from 'html5-qrcode'
+import { Html5Qrcode, Html5QrcodeSupportedFormats } from 'html5-qrcode'
 import { useRouter } from 'vue-router'
 
 const isLoading = ref(true)
 const router = useRouter()
 
 onMounted(async () => {
-  const config = { fps: 10, qrbox: { width: 450, height: 250 } }
+  const config = {
+    fps: 10,
+    qrbox: { width: 450, height: 250 },
+    formatsToSupport: [
+      Html5QrcodeSupportedFormats.EAN_13,
+      Html5QrcodeSupportedFormats.EAN_8,
+    ],
+  }
   const scanner = new Html5Qrcode('reader')
   await scanner.start(
     { facingMode: 'environment' },
