@@ -13,18 +13,23 @@ const isLoading = ref(true)
 const router = useRouter()
 
 onMounted(async () => {
-  const config = {
-    fps: 10,
-    qrbox: { width: 450, height: 250 },
+  const scanner = new Html5Qrcode('reader', {
+    verbose: true,
     formatsToSupport: [
       Html5QrcodeSupportedFormats.EAN_13,
       Html5QrcodeSupportedFormats.EAN_8,
     ],
-  }
-  const scanner = new Html5Qrcode('reader')
+  })
   await scanner.start(
     { facingMode: 'environment' },
-    config,
+    {
+    fps: 5,
+    qrbox: (w, h) => {
+      console.log(w, h)
+      const width = w * 0.4
+      return { width, height: width*0.6 }
+    },
+  },
     async (text, result) => {
       await scanner.stop()
       await router.push(`/product/ean/${text}`)
