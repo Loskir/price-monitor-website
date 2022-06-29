@@ -1,6 +1,5 @@
 const apiRoot = import.meta.env.VITE_API_ROOT
-
-import type {ProductModel} from './components/Product.vue'
+import type { ProductModel } from '@/models/Product'
 
 export function getProductByEan(ean: string): Promise<ProductModel | undefined> {
   return fetch(`${apiRoot}/product/ean/${ean}`)

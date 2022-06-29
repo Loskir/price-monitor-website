@@ -1,5 +1,5 @@
 import { getProductByEan } from '@/api'
-import type { ProductModel } from '@/components/Product.vue'
+import type { ProductModel } from '@/models/Product'
 import { defineStore } from 'pinia'
 
 export const useProductStore = defineStore('product', {

@@ -11,14 +11,7 @@
 </template>
 
 <script setup lang="ts">
-export interface ProductModel {
-  name: string
-  photoUrl?: string
-  ean?: string
-  price?: number
-  basePrice?: number
-  offer?: unknown
-}
+import type { ProductModel } from '@/models/Product'
 
 defineProps<{
   product: ProductModel,
