@@ -1,52 +1,28 @@
 <template>
-  <div v-if="isLoading">Loading...</div>
-  <template v-else>
-    <div v-if="product">
-      <img v-if="product.photoUrl" :src="product.photoUrl" alt="Photo" />
-      <p>
-        {{ product.name }} {{ product.ean }} {{ product.price }}
-        {{ product.basePrice }}
-      </p>
-    </div>
-    <div v-else-if="error">{{ error }}</div>
-    <div v-else>Not found :(</div>
-  </template>
+  <div class="absolute inset-12 flex flex-col justify-center" v-if="store.isLoading">
+    <span class="text-center">Loading...</span>
+  </div>
+  <Product v-else-if="store.product" :product="store.product" />
+  <div v-else-if="store.error">{{ store.error }}</div>
+  <div class="absolute inset-12 flex flex-col justify-center" v-else>
+    <span class="text-center">Not found :(</span>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
+import { watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
+import Product from '../components/Product.vue'
+import { useProductStore } from '@/stores/product'
 
-interface Product {
-  name: string
-  photoUrl?: string
-  ean?: string
-  price?: number
-  basePrice?: number
-  offer?: unknown
-}
+const store = useProductStore()
 
 const route = useRoute()
-const isLoading = ref(true)
-const product = ref<Product>()
-const error = ref()
-const apiRoot = import.meta.env.VITE_API_ROOT
+const ean = route.params.ean as string
 
 watchEffect(() => {
-  fetch(`${apiRoot}/product/ean/` + route.params.ean)
-    .then(async (res) => {
-      console.log('res')
-      const data = await res.json()
-      if (res.status === 200) {
-        product.value = data
-      }
-    })
-    .finally(() => {
-      isLoading.value = false
-    })
-    .catch((e) => {
-      console.log(e)
-      error.value = 'Error!'
-    })
+  store.load(ean)
 })
 </script>
+
+<!-- <style></style> -->
