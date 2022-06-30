@@ -1,7 +1,5 @@
 <template>
-  <div class="flex flex-col">
-    <LineChart v-bind="lineChartProps" />
-  </div>
+  <LineChart v-bind="lineChartProps" />
 </template>
 
 <script setup lang="ts">
