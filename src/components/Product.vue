@@ -21,7 +21,7 @@ defineProps<{
 
 <style>
 .product__image {
-  max-height: 56.25%;
+  aspect-ratio: 16/9;
   object-fit: contain;
 }
 </style>
