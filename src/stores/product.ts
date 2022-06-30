@@ -1,15 +1,18 @@
-import { getProductByEan } from '@/api'
-import type { ProductModel } from '@/models/Product'
+import { getProductByEan, getProductHistoryById } from '@/api'
+import type { ProductModel, ProductPriceModel } from '@/models/Product'
 import { defineStore } from 'pinia'
 
 export const useProductStore = defineStore('product', {
   state: (): {
     product: ProductModel | undefined,
     isLoading: boolean,
-    error?: unknown
+    error?: string,
+    history: ProductPriceModel[],
   } => ({
     product: undefined,
     isLoading: false,
+    error: undefined,
+    history: [],
   }),
 
   actions: {
@@ -19,13 +22,19 @@ export const useProductStore = defineStore('product', {
         .then((res) => {
           this.product = res
         })
-        .finally(() => {
-          this.isLoading = false
-        })
         .catch((e) => {
           console.log(e)
           this.error = 'Error!'
         })
+        .finally(() => {
+          this.isLoading = false
+        })
+      if (this.product) {
+        await getProductHistoryById(this.product.productId)
+          .then((res) => {
+            this.history = res
+          })
+      }
     }
   },
 })

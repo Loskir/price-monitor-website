@@ -7,6 +7,7 @@
       ({{ product.basePrice }}₽)
     </h2>
     <p class="text-gray-500">Арт. {{ product.ean }}</p>
+    <p class="text-gray-500">ID: {{ product.productId }}</p>
   </div>
 </template>
 

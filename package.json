@@ -9,9 +9,13 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "chart.js": "^3.8.0",
+    "chartjs-adapter-luxon": "^1.1.0",
     "html5-qrcode": "^2.2.1",
+    "luxon": "^2.4.0",
     "pinia": "^2.0.14",
     "vue": "^3.2.36",
+    "vue-chart-3": "^3.1.8",
     "vue-router": "^4.0.15"
   },
   "devDependencies": {
