@@ -15,6 +15,9 @@ const props = defineProps<{
   history: ProductPriceModel[],
 }>()
 
+const redColor = '#FCA5A5'
+const greenColor = '#4ADE80'
+
 const chartData = computed((): ChartData<"line"> => {
   const labels = props.history.map((v) => new Date(v.time))
   const data = props.history.map((v) => v.price)
