@@ -25,10 +25,17 @@ const chartData = computed((): ChartData<"line"> => {
     labels,
     datasets: [{
       label: 'Цена',
-      borderColor: '#F87171',
-      pointBorderColor: '#F87171',
-      backgroundColor: '#F87171',
+      borderColor: redColor,
+      pointBorderColor: redColor,
+      backgroundColor: redColor,
       data,
+      cubicInterpolationMode: 'monotone',
+    }, {
+      label: 'Цена без скидки',
+      borderColor: greenColor,
+      pointBorderColor: greenColor,
+      backgroundColor: greenColor,
+      data: props.history.map((v) => v.basePrice),
       cubicInterpolationMode: 'monotone',
     }]
   }
