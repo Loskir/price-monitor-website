@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-xl mx-auto p-8 h-screen">
+  <div class="max-w-xl mx-auto p-8">
     <div class="absolute inset-12 flex flex-col justify-center" v-if="store.isLoading">
       <span class="text-center">Loading...</span>
     </div>

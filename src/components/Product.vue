@@ -21,6 +21,7 @@ defineProps<{
 
 <style>
 .product__image {
+  width: 100%;
   aspect-ratio: 16/9;
   object-fit: contain;
 }

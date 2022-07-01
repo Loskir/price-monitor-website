@@ -48,10 +48,3 @@ const { lineChartProps, lineChartRef } = useLineChart({
 })
 
 </script>
-
-<style>
-.product__image {
-  max-height: 56.25%;
-  object-fit: contain;
-}
-</style>
