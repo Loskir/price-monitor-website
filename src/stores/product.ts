@@ -1,10 +1,10 @@
 import { getProductByEan, getProductHistoryById } from '@/api'
-import type { ProductModel, ProductPriceModel } from '@/models/Product'
+import type { ProductWithPriceModel, ProductPriceModel } from '@/models/Product'
 import { defineStore } from 'pinia'
 
 export const useProductStore = defineStore('product', {
   state: (): {
-    product: ProductModel | undefined,
+    product: ProductWithPriceModel | undefined,
     isLoading: boolean,
     error?: string,
     history: ProductPriceModel[],

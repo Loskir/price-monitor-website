@@ -7,6 +7,8 @@ export interface ProductModel {
   name: string
   photoUrl?: string
   ean?: string
+}
+export interface ProductWithPriceModel extends ProductModel {
   price?: ProductPriceModel
 }
 

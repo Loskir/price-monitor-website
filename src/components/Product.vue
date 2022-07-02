@@ -10,20 +10,21 @@
       <template v-else>
         <span class="font-bold text-xl">{{ product.price.price }}₽</span>
       </template>
-      {{' '}}
-      <span class="text-gray-500 text-xs">обновлено {{ DateTime.fromISO(product.price?.time).setLocale('ru').toFormat('dd MMMM в HH:mm ZZZZ') }}</span>
     </h2>
     <p class="text-gray-500">Арт. {{ product.ean }}</p>
     <p class="text-gray-500">ID: {{ product.productId }}</p>
+    <p class="text-gray-500" v-if="product.price">Обновлено {{
+        DateTime.fromISO(product.price.time).setLocale('ru').toFormat('dd MMMM в HH:mm ZZZZ')
+    }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { ProductModel } from '@/models/Product'
+import type { ProductWithPriceModel } from '@/models/Product'
 import { DateTime } from 'luxon'
 
 defineProps<{
-  product: ProductModel,
+  product: ProductWithPriceModel,
 }>()
 </script>
 
