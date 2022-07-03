@@ -5,5 +5,6 @@ import { RouterLink } from 'vue-router';
 <template>
   <main>
     <RouterLink to="/scanner">Scanner</RouterLink>
+    <RouterLink to="/search">Search</RouterLink>
   </main>
 </template>
