@@ -15,6 +15,11 @@ const router = createRouter({
       component: () => import('../views/ScannerView.vue'),
     },
     {
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/SearchView.vue'),
+    },
+    {
       path: '/product/ean/:ean',
       name: 'productEan',
       component: () => import('../views/ProductEanView.vue'),

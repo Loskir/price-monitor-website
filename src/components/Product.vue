@@ -28,7 +28,7 @@ defineProps<{
 }>()
 </script>
 
-<style>
+<style scoped>
 .product__image {
   width: 100%;
   aspect-ratio: 16/9;

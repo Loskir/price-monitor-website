@@ -26,3 +26,17 @@ export function getProductHistoryById(id: string): Promise<ProductPriceModel[]> 
       return await res.json() as ProductPriceModel[]
     })
 }
+
+export function searchProducts(query: string): Promise<ProductWithPriceModel[]> {
+  const queryString = new URLSearchParams({
+    query,
+  })
+  return fetch(`${apiRoot}/products/search?${queryString}`)
+    .finally(() => new Promise((r) => setTimeout(r, 1000)))
+    .then(async (res) => {
+      if (res.status > 400) {
+        throw new Error() // todo
+      }
+      return await res.json() as ProductWithPriceModel[]
+    })
+}
