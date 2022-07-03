@@ -32,7 +32,6 @@ export function searchProducts(query: string): Promise<ProductWithPriceModel[]> 
     query,
   })
   return fetch(`${apiRoot}/products/search?${queryString}`)
-    .finally(() => new Promise((r) => setTimeout(r, 1000)))
     .then(async (res) => {
       if (res.status > 400) {
         throw new Error() // todo
