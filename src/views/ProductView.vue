@@ -24,10 +24,10 @@ import ProductHistoryGraph from '../components/ProductHistoryGraph.vue'
 const store = useProductStore()
 
 const route = useRoute()
-const ean = route.params.ean as string
+const id = route.params.id as string
 
 watchEffect(() => {
-  store.load(ean)
+  store.load(id)
 })
 </script>
 

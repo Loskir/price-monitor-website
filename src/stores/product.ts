@@ -1,4 +1,4 @@
-import { getProductByEan, getProductHistoryById } from '@/api'
+import { getProductById, getProductHistoryById } from '@/api'
 import type { ProductWithPriceModel, ProductPriceModel } from '@/models/Product'
 import { defineStore } from 'pinia'
 
@@ -16,9 +16,9 @@ export const useProductStore = defineStore('product', {
   }),
 
   actions: {
-    async load(ean: string) {
+    async load(id: string) {
       this.isLoading = true
-      await getProductByEan(ean)
+      await getProductById(id)
         .then((res) => {
           this.product = res
         })

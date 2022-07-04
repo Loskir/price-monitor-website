@@ -2,8 +2,8 @@ const apiRoot = import.meta.env.VITE_API_ROOT
 import type { ProductWithPriceModel, ProductPriceModel } from '@/models/Product'
 import type { CategoryModel } from './models/Category'
 
-export function getProductByEan(ean: string): Promise<ProductWithPriceModel | undefined> {
-  return fetch(`${apiRoot}/product/ean/${ean}`)
+export function getProductById(id: string): Promise<ProductWithPriceModel | undefined> {
+  return fetch(`${apiRoot}/products/${id}`)
     .then(async (res) => {
       if (res.status === 404) {
         return
