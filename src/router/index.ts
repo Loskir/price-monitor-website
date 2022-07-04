@@ -20,6 +20,16 @@ const router = createRouter({
       component: () => import('../views/SearchView.vue'),
     },
     {
+      path: '/categories',
+      name: 'categories',
+      component: () => import('../views/CategoriesView.vue'),
+    },
+    {
+      path: '/category/:id',
+      name: 'category',
+      component: () => import('../views/CategoriesView.vue'),
+    },
+    {
       path: '/product/ean/:ean',
       name: 'productEan',
       component: () => import('../views/ProductEanView.vue'),

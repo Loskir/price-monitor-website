@@ -5,7 +5,7 @@
     <h2 class="product__price" v-if="product.price">
       <template v-if="product.price.price !== product.price.basePrice">
         <span class="font-bold text-red-600 text-xl">{{ product.price.price }}₽</span>
-        ({{ product.price.basePrice }}₽)
+        <s>{{ product.price.basePrice }}₽</s>
       </template>
       <template v-else>
         <span class="font-bold text-xl">{{ product.price.price }}₽</span>

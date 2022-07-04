@@ -1,5 +1,6 @@
 const apiRoot = import.meta.env.VITE_API_ROOT
 import type { ProductWithPriceModel, ProductPriceModel } from '@/models/Product'
+import type { CategoryModel } from './models/Category'
 
 export function getProductByEan(ean: string): Promise<ProductWithPriceModel | undefined> {
   return fetch(`${apiRoot}/product/ean/${ean}`)
@@ -32,6 +33,29 @@ export function searchProducts(query: string): Promise<ProductWithPriceModel[]> 
     query,
   })
   return fetch(`${apiRoot}/products/search?${queryString}`)
+    .then(async (res) => {
+      if (res.status > 400) {
+        throw new Error() // todo
+      }
+      return await res.json() as ProductWithPriceModel[]
+    })
+}
+
+export function getCategories(parentId: number | null): Promise<CategoryModel[]> {
+  const params = parentId !== null
+    ? new URLSearchParams({ parentId: parentId.toString() })
+    : new URLSearchParams()
+  return fetch(`${apiRoot}/categories?${params}`)
+    .then(async (res) => {
+      if (res.status > 400) {
+        throw new Error() // todo
+      }
+      return await res.json() as CategoryModel[]
+    })
+}
+
+export function getProductsByCategory(categoryId: number): Promise<ProductWithPriceModel[]> {
+  return fetch(`${apiRoot}/categories/${categoryId}/products`)
     .then(async (res) => {
       if (res.status > 400) {
         throw new Error() // todo
