@@ -4,8 +4,8 @@ import { RouterLink } from 'vue-router';
 
 <template>
   <main>
-    <RouterLink to="/scanner">Scanner</RouterLink>
-    <RouterLink to="/search">Search</RouterLink>
-    <RouterLink to="/categories">Categories</RouterLink>
+    <p><RouterLink to="/scanner">Scanner</RouterLink></p>
+    <p><RouterLink to="/search">Search</RouterLink></p>
+    <p><RouterLink to="/categories">Categories</RouterLink></p>
   </main>
 </template>
