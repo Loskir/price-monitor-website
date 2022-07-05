@@ -2,7 +2,7 @@ import { searchProducts} from '@/api'
 import type { ProductWithPriceModel } from '@/models/Product'
 import { defineStore } from 'pinia'
 
-export const useSearchStore = defineStore('product', {
+export const useSearchStore = defineStore('search', {
   state: (): {
     isLoading: boolean,
     error?: string,

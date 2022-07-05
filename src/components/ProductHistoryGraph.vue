@@ -15,8 +15,8 @@ const props = defineProps<{
   history: ProductPriceModel[],
 }>()
 
-const redColor = '#FCA5A5'
-const greenColor = '#4ADE80'
+const priceColor = '#4ADE80'
+const basePriceColor = '#6B7280'
 
 const chartData = computed((): ChartData<"line"> => {
   const labels = props.history.map((v) => new Date(v.time))
@@ -25,16 +25,16 @@ const chartData = computed((): ChartData<"line"> => {
     labels,
     datasets: [{
       label: 'Цена',
-      borderColor: redColor,
-      pointBorderColor: redColor,
-      backgroundColor: redColor,
+      borderColor: priceColor,
+      pointBorderColor: priceColor,
+      backgroundColor: priceColor,
       data,
       cubicInterpolationMode: 'monotone',
     }, {
       label: 'Цена без скидки',
-      borderColor: greenColor,
-      pointBorderColor: greenColor,
-      backgroundColor: greenColor,
+      borderColor: basePriceColor,
+      pointBorderColor: basePriceColor,
+      backgroundColor: basePriceColor,
       data: props.history.map((v) => v.basePrice),
       cubicInterpolationMode: 'monotone',
     }]

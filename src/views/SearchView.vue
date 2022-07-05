@@ -2,8 +2,8 @@
   <div class="max-w-xl mx-auto p-8 min-h-screen flex flex-col">
     <input class="bg-gray-100 p-2 rounded w-full mb-1" v-model="state.query" />
     <div class="divide-y relative flex-grow">
-      <div class="absolute inset-0 loading-overlay flex flex-col justify-center" v-if="store.isLoading">
-      <p class="text-center font-semibold">Loading...</p>
+      <div class="absolute inset-0 loading-overlay flex flex-col justify-center z-10" v-if="store.isLoading">
+        <p class="text-center font-semibold">Loading...</p>
       </div>
       <ProductListItem :product="product" v-for="product in store.products" />
       <ProductListItem :product="product" v-for="product in store.products" />

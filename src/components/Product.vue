@@ -4,7 +4,7 @@
     <h1 class="product__name text-4xl font-semibold">{{ product.name }}</h1>
     <h2 class="product__price" v-if="product.price">
       <template v-if="product.price.price !== product.price.basePrice">
-        <span class="font-bold text-red-600 text-xl">
+        <span class="font-bold text-green-600 text-xl">
           {{ product.price.price }}₽
         </span> <s>
           {{ product.price.basePrice }}₽
