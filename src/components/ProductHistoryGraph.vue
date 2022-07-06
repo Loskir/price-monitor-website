@@ -8,6 +8,7 @@ import { computed } from 'vue'
 import { Chart, registerables, type ChartData } from 'chart.js'
 import { LineChart, useLineChart } from 'vue-chart-3'
 import 'chartjs-adapter-luxon'
+import colors from 'tailwindcss/colors'
 
 Chart.register(...registerables)
 
@@ -15,8 +16,8 @@ const props = defineProps<{
   history: ProductPriceModel[],
 }>()
 
-const priceColor = '#4ADE80'
-const basePriceColor = '#6B7280'
+const priceColor = colors.green[500]
+const basePriceColor = colors.gray[300]
 
 const chartData = computed((): ChartData<"line"> => {
   const labels = props.history.map((v) => new Date(v.time))
