@@ -3,21 +3,21 @@
     <img class="mr-4 product__image w-24 p-1 flex-shrink-0" v-if="product.photoUrl" :src="product.photoUrl"
       alt="Photo" />
     <div class="flex flex-col justify-center">
-      <h1 class="text-xl font-semibold">
+      <h1 class="text-lg font-semibold product-list-item__name">
         <RouterLink :to="`/product/${product.productId}`" class="product-list-item__router-link">
           {{ product.name }}
         </RouterLink>
       </h1>
       <h2 v-if="product.price">
         <template v-if="product.price.price !== product.price.basePrice">
-          <span class="font-bold text-green-600">
+          <span class="font-bold text-green-600 text-xl">
             {{ product.price.price }}₽
           </span> <s>
             {{ product.price.basePrice }}₽
           </s>
         </template>
         <template v-else>
-          <span class="font-bold">{{ product.price.price }}₽</span>
+          <span class="font-bold text-xl">{{ product.price.price }}₽</span>
         </template>
       </h2>
     </div>
@@ -37,6 +37,12 @@ defineProps<{
 .product__image {
   /* width: 100%; */
   object-fit: contain;
+}
+
+.product-list-item__name {
+  max-height: 3.5rem; /* 2x line height */
+  display: inline-block;
+  overflow: hidden;
 }
 
 .product-list-item__router-link::before {
