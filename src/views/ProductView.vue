@@ -15,19 +15,28 @@
 </template>
 
 <script setup lang="ts">
-import { watchEffect } from 'vue'
+import { onUnmounted, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import Product from '../components/Product.vue'
 import { useProductStore } from '@/stores/product'
 import ProductHistoryGraph from '../components/ProductHistoryGraph.vue'
+import { RouterLink } from 'vue-router'
 
 const store = useProductStore()
 
 const route = useRoute()
-const id = route.params.id as string
 
-watchEffect(() => {
+const stop = watchEffect(() => {
+  if (route.name !== 'product') {
+    return
+  }
+  const id = route.params.id as string
+  console.log('load')
   store.load(id)
+})
+
+onUnmounted(() => {
+  stop()
 })
 </script>
 

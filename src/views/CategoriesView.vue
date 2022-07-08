@@ -16,7 +16,7 @@
 import { getCategories, getProductsByCategory } from '@/api'
 import type { CategoryModel } from '@/models/Category'
 import type { ProductWithPriceModel } from '@/models/Product';
-import { reactive, watchEffect } from 'vue'
+import { onUnmounted, reactive, watchEffect } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import ProductListItem from '../components/ProductListItem.vue'
 
@@ -29,13 +29,15 @@ const state = reactive({
 
 const route = useRoute()
 
-watchEffect(() => {
+const stop = watchEffect(() => {
+  if (route.name !== 'category') {
+    return
+  }
   state.isLoading = true
   let parentId: number | null = null
   if (route.params.id) {
-    parentId = Number(route.params.id)
+    parentId = Number(route.params.id) || null
   }
-  console.log(route.params.id)
   Promise.all([
     getCategories(parentId)
       .then((res) => {
@@ -54,5 +56,7 @@ watchEffect(() => {
       state.isLoading = false
     })
 })
+
+onUnmounted(() => stop())
 
 </script>

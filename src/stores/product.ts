@@ -17,6 +17,7 @@ export const useProductStore = defineStore('product', {
 
   actions: {
     async load(id: string) {
+      this.$reset()
       this.isLoading = true
       await getProductById(id)
         .then((res) => {
