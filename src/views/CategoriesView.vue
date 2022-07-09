@@ -30,7 +30,7 @@ const state = reactive({
 const route = useRoute()
 
 const stop = watchEffect(() => {
-  if (route.name !== 'category') {
+  if (route.name !== 'categories') {
     return
   }
   state.isLoading = true
