@@ -34,7 +34,7 @@ defineProps<{
 <style scoped>
 .product__image {
   width: 100%;
-  aspect-ratio: 16/9;
   object-fit: contain;
+  max-height: 300px;
 }
 </style>
