@@ -5,7 +5,7 @@
       <p v-for="c in state.categories">
         <RouterLink :to="`/category/${c.categoryId}`">{{ c.name }}</RouterLink>
       </p>
-      <div class="flex flex-col divide-y">
+      <div class="flex flex-col">
         <ProductListItem v-for="p in state.products" :product="p"/>
       </div>
     </template>

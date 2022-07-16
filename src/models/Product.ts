@@ -1,3 +1,9 @@
+export enum UomType {
+  kg = 'kg',
+  l = 'l',
+  none = 'none',
+}
+
 export interface Offer {
 
 }
@@ -7,9 +13,14 @@ export interface ProductModel {
   name: string
   photoUrl?: string
   ean?: string
+  uomType?: UomType
+  uom?: string
+  volume?: number
 }
 export interface ProductWithPriceModel extends ProductModel {
-  price?: ProductPriceModel
+  price?: ProductPriceModel & {
+    unitPrice: number
+  }
 }
 
 export interface ProductPriceModel {
