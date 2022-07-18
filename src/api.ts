@@ -54,8 +54,32 @@ export function getCategories(parentId: number | null): Promise<CategoryModel[]>
     })
 }
 
-export function getProductsByCategory(categoryId: number): Promise<ProductWithPriceModel[]> {
-  return fetch(`${apiRoot}/categories/${categoryId}/products`)
+export enum SortType {
+  name = 'name',
+  price = 'price',
+  unitPrice = 'unitPrice',
+}
+
+export enum SortOrder {
+  asc = 'asc',
+  desc = 'desc',
+}
+
+export function getProductsByCategory(categoryId: number, {
+  sort,
+  sortOrder,
+}: {
+  sort?: SortType
+  sortOrder?: SortOrder
+} = {}): Promise<ProductWithPriceModel[]> {
+  const params = new URLSearchParams()
+  if (sort) {
+    params.append('sort', sort)
+  }
+  if (sortOrder) {
+    params.append('sortOrder', sortOrder)
+  }
+  return fetch(`${apiRoot}/categories/${categoryId}/products?${params}`)
     .then(async (res) => {
       if (res.status > 400) {
         throw new Error() // todo
