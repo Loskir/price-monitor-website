@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col">
-    <div class="flex flex-row justify-start relative items-center product-list-item">
+    <div class="flex flex-row justify-start relative items-stretch product-list-item">
       <img class="product__image h-24 w-24 mr-4 p-2 flex-shrink-0 flex-grow-0" v-if="product.photoUrl"
         :src="product.photoUrl" alt="Photo" />
-      <div class="flex flex-col justify-center py-2">
+      <div class="flex flex-col justify-center py-2 border-b border-gray-300 border-solid flex-grow">
         <h1 class="text-gray-800 font-medium leading-tight">
           <RouterLink :to="`/product/${product.productId}`" class="product-list-item__router-link">
             {{ product.name }}
@@ -21,7 +21,6 @@
         </h2>
       </div>
     </div>
-    <div class="border-b border-gray-300 border-solid ml-32"></div>
   </div>
 </template>
 
