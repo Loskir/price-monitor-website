@@ -1,17 +1,17 @@
 <template>
   <div class="flex flex-col">
     <div class="flex flex-row justify-start relative items-center product-list-item">
-      <img class="product__image h-28 w-28 mr-4 p-2 flex-shrink-0 flex-grow-0" v-if="product.photoUrl"
+      <img class="product__image h-24 w-24 mr-4 p-2 flex-shrink-0 flex-grow-0" v-if="product.photoUrl"
         :src="product.photoUrl" alt="Photo" />
-      <div class="flex flex-col justify-center">
-        <h1 class="text-gray-800 text-lg font-medium leading-tight">
+      <div class="flex flex-col justify-center py-2">
+        <h1 class="text-gray-800 font-medium leading-tight">
           <RouterLink :to="`/product/${product.productId}`" class="product-list-item__router-link">
             {{ product.name }}
           </RouterLink>
         </h1>
-        <h2 v-if="product.price" class="mt-1 text-lg">
+        <h2 v-if="product.price" class="mt-1 text-md">
           <template v-if="product.price.price !== product.price.basePrice">
-            <span class="font-semibold text-green-600 text-xl">{{ product.price.price }}₽</span>
+            <span class="font-semibold text-green-600 text-lg">{{ product.price.price }}₽</span>
             <span class="line-through ml-1">{{ product.price.basePrice }}₽</span>
           </template>
           <template v-else>

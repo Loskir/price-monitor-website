@@ -1,5 +1,5 @@
 <template>
-  <main class="max-w-xl mx-auto mt-4">
+  <main class="max-w-xl mx-auto mt-4 px-4">
     <p v-if="categoryStore.isLoading">Loading...</p>
     <div class="flex flex-wrap gap-2 mb-4" v-else-if="categoryStore.categories.length > 0">
       <RouterLink 
@@ -27,7 +27,6 @@
 
 <script setup lang="ts">
 import { SortOrder, SortType } from '@/api'
-import type { ProductWithPriceModel } from '@/models/Product';
 import { useCategoryStore } from '@/stores/category';
 import { useCategoryProductsStore } from '@/stores/categoryProducts';
 import { onUnmounted, reactive, watchEffect } from 'vue'
