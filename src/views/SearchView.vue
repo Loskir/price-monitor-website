@@ -6,8 +6,6 @@
         <p class="text-center font-semibold">Loading...</p>
       </div>
       <ProductListItem :product="product" v-for="product in store.products" />
-      <ProductListItem :product="product" v-for="product in store.products" />
-      <ProductListItem :product="product" v-for="product in store.products" />
     </div>
     <p v-if="store.error">{{ store.error }}</p>
   </div>
